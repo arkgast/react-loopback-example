@@ -2,17 +2,20 @@ const { resolve } = require('path')
 const webpack = require('webpack')
 const WebpackConfig = require('webpack-config')
 
+const ENTRIES = require('./entries')
+
 module.exports = new WebpackConfig.Config()
   .extend('config/webpack.base.js')
   .merge({
     devtool: 'inline-source-map',
     entry: {
-      main: [
+      app: [
         'react-hot-loader/patch',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         './index.js'
-      ]
+      ],
+      main: ENTRIES.main
     },
     devServer: {
       contentBase: resolve(__dirname, 'public'),

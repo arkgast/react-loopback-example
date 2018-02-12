@@ -1,6 +1,10 @@
 {
   "presets": [
-      ["es2015", {"modules": false}],
+      ["env", {
+        "targets": {
+          "browsers": ["last 2 versions", "edge >= 14", "safari >= 9.1"]
+        }
+      }],
       "react"
   ],
   "plugins": [
@@ -28,7 +32,7 @@
       ]
     },
     "test": {
-      "presets": ["es2015", "react"],
+      "presets": ["env", "react"],
       "plugins": [
         "dynamic-import-node"
       ]

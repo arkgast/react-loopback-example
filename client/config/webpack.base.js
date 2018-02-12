@@ -1,6 +1,9 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const AutoDLLPlugin = require('autodll-webpack-plugin')
+
+const ENTRIES = require('./entries')
 
 module.exports = {
   context: resolve(__dirname, '../src'),
@@ -65,25 +68,25 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.REACT_APP_STRIPE_KEY': JSON.stringify(process.env.REACT_APP_STRIPE_KEY)
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ context }) => /node_modules/.test(context)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'react-build',
-      minChunks: ({ context }) => /node_modules\/react/.test(context)
+      name: 'main',
+      filename: 'js/main-[hash:5].js',
+      chunks: ['main', 'app']
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime'
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      children: true,
-      minChunks: 2
+    new AutoDLLPlugin({
+      inject: true,
+      context: resolve(__dirname, '..'),
+      filename: '[name]-[hash:5].js',
+      entry: {
+        main: ENTRIES.main
+      }
     }),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Super App',
       template: '../public/index.html',
