@@ -1,4 +1,7 @@
-import { FETCH_USER_INIT, FETCH_USER_SUCCESS, FETCH_USER_ERROR } from './actionTypes'
+import {
+  FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_ERROR,
+  SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR
+} from './actionTypes'
 
 const initialState = {
   isAuthenticated: false,
@@ -10,22 +13,22 @@ const initialState = {
 
 export const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case (FETCH_USER_INIT):
+    case SIGN_IN_REQUEST:
+    case FETCH_USER_REQUEST:
       return {
         ...state,
         isFetching: true
       }
-    case (FETCH_USER_SUCCESS):
+    case SIGN_IN_SUCCESS:
+    case FETCH_USER_SUCCESS:
       return {
         ...state,
         isAuthenticated: !!action.payload,
         isFeched: true,
         isFetching: false,
-        user: {
-          googleId: action.payload.googleId,
-          credits: action.payload.credits
-        }
+        user: action.payload
       }
+    case SIGN_IN_ERROR:
     case (FETCH_USER_ERROR):
       return {
         ...state,

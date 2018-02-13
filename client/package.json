@@ -4,7 +4,7 @@
   "description": "Frontend of react-loopback-example",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --colors",
+    "build": "env-cmd .env.production webpack --colors",
     "start": "env-cmd .env.development webpack-dev-server --colors",
     "test:watch": "jest --watch",
     "test": "jest"
@@ -51,7 +51,8 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "next",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "universal-cookie": "^2.1.2"
   },
   "devDependencies": {
     "autodll-webpack-plugin": "^0.3.8",

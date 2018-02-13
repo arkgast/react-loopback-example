@@ -1,10 +1,10 @@
-export default {
+export default (theme) => ({
   page: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '1.5em',
-    padding: '2em',
-    width: 'calc(100% - 2em * 2)'
+    marginTop: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 2,
+    width: `calc(100% - ${theme.spacing.unit * 4}px)`
   }
-}
+})

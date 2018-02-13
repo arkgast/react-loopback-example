@@ -1,3 +1,4 @@
 # Dirs
+build
 .babel-cache
 .env.development

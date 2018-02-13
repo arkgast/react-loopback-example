@@ -5,9 +5,12 @@ import { withStyles } from 'material-ui/styles'
 
 import Styles from 'Styles/base'
 
-const styles = {
-  page: {
-    ...Styles.page
+const styles = (theme) => {
+  const styles = Styles(theme)
+  return {
+    page: {
+      ...styles.page
+    }
   }
 }
 

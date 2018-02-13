@@ -1,6 +1,7 @@
 {
-  "name": "user",
-  "base": "User",
+  "name": "product",
+  "plural": "products",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -9,17 +10,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "lastName": {
-      "type": "string",
-      "required": true
-    },
-    "phone": {
-      "type": "number",
-      "required": true
-    },
-    "address": {
-      "type": "string"
     }
   },
   "validations": [],

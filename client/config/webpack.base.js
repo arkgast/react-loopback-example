@@ -8,9 +8,10 @@ const ENTRIES = require('./entries')
 module.exports = {
   context: resolve(__dirname, '../src'),
   output: {
-    filename: 'js/[name].[hash:5].js',
     chunkFilename: 'js/[name].[hash:5].chunk.js',
+    filename: 'js/[name].[hash:5].js',
     path: resolve(__dirname, '../build'),
+    publicPath: '/',
     sourceMapFilename: '[file].map'
   },
   resolve: {

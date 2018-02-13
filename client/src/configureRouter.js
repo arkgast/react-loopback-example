@@ -11,6 +11,9 @@ import LinearBuffer from './components/LinearBuffer'
 const Home = importedComponent(() => import('./scenes/Home'), {
   LoadingComponent: () => <LinearBuffer />
 })
+const SignIn = importedComponent(() => import('./scenes/SignIn'), {
+  LoadingComponent: () => <LinearBuffer />
+})
 
 export default class Root extends Component {
   render () {
@@ -19,6 +22,7 @@ export default class Root extends Component {
         <ConnectedRouter history={history}>
           <App>
             <Route path='/' exact component={Home} />
+            <Route path='/sign-in' exact component={SignIn} />
           </App>
         </ConnectedRouter>
       </Provider>

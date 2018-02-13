@@ -17,7 +17,7 @@ class App extends Component {
       ]
     } else {
       return [
-        <Button key='1' href='#'>Login</Button>
+        <MenuItem key='1' to='/sign-in' activeOnlyWhenExact label='Sign in' />
       ]
     }
   }
